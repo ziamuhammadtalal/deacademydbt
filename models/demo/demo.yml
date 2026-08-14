@@ -14,6 +14,10 @@ models:
                 config:
                   severity: warn
 
+      - name: emp_salary
+        data_tests:
+          - salary_check
+          
 sources:
   - name: employee
     database: DBT_DB
