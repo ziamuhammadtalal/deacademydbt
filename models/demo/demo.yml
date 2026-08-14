@@ -30,6 +30,9 @@ models:
   - name: product
     description: 'DBT model for product'
 
+  - name: purchase
+    description: 'DBT model for purchase'
+
 sources:
   - name: employee
     database: DBT_DB
@@ -54,3 +57,9 @@ sources:
     schema: PUBLIC
     tables:
       - name: product_src
+
+  - name: purchase
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: purchase_src
