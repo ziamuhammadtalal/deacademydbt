@@ -33,6 +33,12 @@ models:
   - name: purchase
     description: 'DBT model for purchase'
 
+  - name: clean_orders
+    description: 'DBT model for clean orders as ephemeral model'
+
+  - name: final_orders
+    description: 'DBT model for final orders as ephemeral model'
+
 sources:
   - name: employee
     database: DBT_DB
@@ -63,3 +69,10 @@ sources:
     schema: PUBLIC
     tables:
       - name: purchase_src
+
+  - name: orders
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: base_orders
+
