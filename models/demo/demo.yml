@@ -1,0 +1,99 @@
+version: 2
+
+models:
+  - name: employee
+    description: "Employee DBT model"
+    columns:
+      - name: emp_id
+        data_tests:
+          - unique
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['1','2','3','4','5']
+                config:
+                  severity: warn
+
+      - name: emp_salary
+        data_tests:
+          - salary_check
+
+  - name: customer
+    description: 'Customer data Model'
+
+  - name: customer_vw
+    description: 'Customer View data Model'
+
+  - name: sales
+    description: 'DBT model for Sales table'
+
+  - name: product
+    description: 'DBT model for product'
+
+  - name: purchase
+    description: 'DBT model for purchase'
+
+  - name: clean_orders
+    description: 'DBT model for clean orders as ephemeral model'
+
+  - name: final_orders
+    description: 'DBT model for final orders as ephemeral model'
+
+  - name: session
+    description: 'DBT model for session table'
+
+  - name: concat_name
+    description: "DBT Model for the concat name"
+
+  - name: concat_address
+    description: "DBT Model for the concat address"
+
+    
+sources:
+  - name: employee
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: EMPLOYEE_RAW
+  
+  - name: customer
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: CUSTOMER_SRC
+  
+  - name: sales
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: sales_src
+
+  - name: product
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: product_src
+
+  - name: purchase
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: purchase_src
+
+  - name: orders
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: base_orders
+
+  - name: patient
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: patient_src
+
+  - name: session
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: SESSION_SRC
